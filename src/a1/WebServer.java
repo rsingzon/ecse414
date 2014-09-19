@@ -28,17 +28,23 @@ public final class WebServer {
 		int port = 6789;
 		
 		// Create the socket to listen for incoming connections
+		ServerSocket welcomeSocket = new ServerSocket(port);
 		
 		// Enter an infinite loop and process incoming connections
 		// Use Ctrl-C to quit the application
 		while (true) {
 			// Listen for a new TCP connection request
+			Socket connectionSocket = welcomeSocket.accept();
+			System.out.println("Connection received");
 			
 			// Construct an HttpRequest object to process the request message
+			HttpRequest request = new HttpRequest(connectionSocket);
 			
 			// Create a new thread to process the request
+			Thread thread = new Thread(request);
 			
 			// Start the thread
+			thread.start();
 		}
 	}
 }
