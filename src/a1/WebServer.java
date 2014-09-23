@@ -33,6 +33,7 @@ public final class WebServer {
 		// Enter an infinite loop and process incoming connections
 		// Use Ctrl-C to quit the application
 		while (true) {
+			System.out.println("Waiting for client");
 			// Listen for a new TCP connection request
 			Socket connectionSocket = welcomeSocket.accept();
 			System.out.println("Connection received");
@@ -44,6 +45,7 @@ public final class WebServer {
 			Thread thread = new Thread(request);
 			
 			// Start the thread
+			System.out.println("Thread started");
 			thread.start();
 		}
 	}
@@ -86,19 +88,36 @@ final class HttpRequest implements Runnable {
 	 */
 	private void processRequest() throws Exception
 	{
+		int port = 6789;
+		
 		// STEP 2a: Parse the HTTP Request message
 		// Get a reference to the socket's input and output streams
+		Socket clientSocket = new Socket("localhost", port);
 		
 		// Set up input stream filters
+		BufferedReader userInput = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+		DataOutputStream serverOutput = new DataOutputStream(clientSocket.getOutputStream());
 		
 		// Get the request line of the HTTP request message
-		String requestLine = "";
+		String requestLine = userInput.readLine();
 
+		System.out.println("Request received");
+		
 		// Display the request line
 		System.out.println();
 		System.out.println(requestLine);
 
 		// Get and display the header lines
+		while(true){
+			String headerLine = userInput.readLine();
+			
+			//Break if the header returns a blank line
+			if(headerLine.equals("") || headerLine.equals("\n")){
+				break;
+			}
+			
+			System.out.println(headerLine);
+		}
 
 
 		// (The last part of STEP 2 is at the end of this method)
@@ -142,6 +161,8 @@ final class HttpRequest implements Runnable {
 
 
 		// STEP 2b: Close the input/output streams and socket before returning
+		userInput.close();
+		serverOutput.close();
 	}
 	
 	/**
