@@ -151,19 +151,33 @@ final class HttpRequest implements Runnable {
 		System.out.println(fileName);
 		
 		if(fileExists){
-			statusLine = "GET "+fileName+" HTTP/1.0";
-			contentTypeLine = "";	
+			statusLine = "HTTP/1.0 200 OK";
+			contentTypeLine = "Content-type: " + contentType(fileName);
 		}
-		System.out.println(statusLine);
+		else{
+			statusLine = "HTTP/1.0 404 Not Found";
+			contentTypeLine = "Content-type: text/html";
+		}
+		System.out.println(statusLine + "\n" + contentTypeLine);
 				
 		// Send a HTTP response header containing the status line and
 		// content-type line. Don't forget to include a blank line after the
 		// content-type to signal the end of the header.
-		
+		serverOutput.writeBytes(statusLine);
+		serverOutput.writeBytes(CRLF);
+		serverOutput.writeBytes(contentTypeLine);	
+		serverOutput.writeBytes(CRLF);
+		serverOutput.writeBytes("\n");
 		
 		// Send the body of the message (the web object)
 		// You may use the sendBytes helper method provided
-
+		if(fileExists){
+			sendBytes(fis, serverOutput);
+		}
+		else{			
+			//sendBytes(errorMessage, serverOutput);
+			serverOutput.writeBytes(errorMessage);
+		}
 
 		// STEP 2b: Close the input/output streams and socket before returning
 		userInput.close();
@@ -180,7 +194,16 @@ final class HttpRequest implements Runnable {
 		if (fileName.endsWith(".htm") || fileName.endsWith(".html")) {
 			return "text/html";
 		}
-		// STEP 3b: Add code here to deal with GIFs and JPEGs
+		// STEP 3b: Add code here to deal with GIFs, JPEGs, and CSS
+		else if (fileName.endsWith(".jpg") || fileName.endsWith(".jpeg")){
+			return "image/jpeg";
+		}
+		else if (fileName.endsWith(".gif")){
+			return "image/gif";
+		}
+		else if (fileName.endsWith(".css")){
+			return "text/css";
+		}
 		return "application/octet-stream";
 	}
 
