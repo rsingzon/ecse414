@@ -1,4 +1,4 @@
-package a1;
+
 /**
  * This is the template file for Assignment 1 Problem 2 for ECSE 414 Fall 2014.
  * 
