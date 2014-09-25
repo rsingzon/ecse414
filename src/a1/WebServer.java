@@ -92,7 +92,7 @@ final class HttpRequest implements Runnable {
 		
 		// STEP 2a: Parse the HTTP Request message
 		// Get a reference to the socket's input and output streams
-		Socket clientSocket = new Socket("localhost", port);
+		Socket clientSocket = this.socket;
 		
 		// Set up input stream filters
 		BufferedReader userInput = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
@@ -100,11 +100,9 @@ final class HttpRequest implements Runnable {
 		
 		// Get the request line of the HTTP request message
 		String requestLine = userInput.readLine();
-
-		System.out.println("Request received");
 		
 		// Display the request line
-		System.out.println();
+		System.out.println("\n---- Request ----");
 		System.out.println(requestLine);
 
 		// Get and display the header lines
@@ -115,10 +113,10 @@ final class HttpRequest implements Runnable {
 			if(headerLine.equals("") || headerLine.equals("\n")){
 				break;
 			}
-			
 			System.out.println(headerLine);
 		}
-
+		
+		System.out.println("---- End of header---\n");
 
 		// (The last part of STEP 2 is at the end of this method)
 		// (Close the socket)
@@ -149,8 +147,15 @@ final class HttpRequest implements Runnable {
 
 		// Fill in the values of statusLine and contentTypeLine based on whether
 		// or not the requested file was found
-
 		
+		System.out.println(fileName);
+		
+		if(fileExists){
+			statusLine = "GET "+fileName+" HTTP/1.0";
+			contentTypeLine = "";	
+		}
+		System.out.println(statusLine);
+				
 		// Send a HTTP response header containing the status line and
 		// content-type line. Don't forget to include a blank line after the
 		// content-type to signal the end of the header.
