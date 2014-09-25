@@ -45,7 +45,6 @@ public final class WebServer {
 			Thread thread = new Thread(request);
 			
 			// Start the thread
-			System.out.println("Thread started");
 			thread.start();
 		}
 	}
@@ -102,15 +101,17 @@ final class HttpRequest implements Runnable {
 		String requestLine = userInput.readLine();
 		
 		// Display the request line
-		System.out.println("\n---- Request ----");
-		System.out.println(requestLine);
+		if(requestLine != null){
+			System.out.println("\n---- Request ----");
+			System.out.println(requestLine);			
+		}
 
 		// Get and display the header lines
 		while(true){
 			String headerLine = userInput.readLine();
 			
 			//Break if the header returns a blank line
-			if(headerLine.equals("") || headerLine.equals("\n")){
+			if(headerLine.equals("") || headerLine.equals("\n") || headerLine == null){
 				break;
 			}
 			System.out.println(headerLine);
@@ -146,10 +147,7 @@ final class HttpRequest implements Runnable {
 		String errorMessage = "<HTML><HEAD><TITLE>404 Not Found</TITLE></HEAD><BODY>404 Not Found</BODY></HTML>";
 
 		// Fill in the values of statusLine and contentTypeLine based on whether
-		// or not the requested file was found
-		
-		System.out.println(fileName);
-		
+		// or not the requested file was found		
 		if(fileExists){
 			statusLine = "HTTP/1.0 200 OK";
 			contentTypeLine = "Content-type: " + contentType(fileName);
@@ -158,7 +156,6 @@ final class HttpRequest implements Runnable {
 			statusLine = "HTTP/1.0 404 Not Found";
 			contentTypeLine = "Content-type: text/html";
 		}
-		System.out.println(statusLine + "\n" + contentTypeLine);
 				
 		// Send a HTTP response header containing the status line and
 		// content-type line. Don't forget to include a blank line after the
