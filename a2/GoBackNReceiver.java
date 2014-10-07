@@ -1,3 +1,8 @@
+/**
+ * Singzon, Ryan
+ * 260397455
+ */
+
 /** 
  * GoBackNReceiver - Assignment 2 for ECSE 414
  *
@@ -24,7 +29,15 @@ class GoBackNReceiver {
 	public GoBackNReceiver(int port) {
 		// STEP 1: Fill in this constructor method
         // Initialize receiverSocket as a DatagramSocket on the specified port
+		try{
+			receiverSocket = new DatagramSocket(senderPort);			
+		} catch(SocketException e){
+			System.out.println("Error creating receiverSocket" + e.getStackTrace());
+		}
+		
         // Then call waitForConnection()
+		waitForConnection();
+		
 	}
 	
 	/**
@@ -32,23 +45,54 @@ class GoBackNReceiver {
 	 */
 	private void waitForConnection() {
 		// STEP 2: Block until a Hello packet is received, then initialize the receiver
-        // First block until receiveing an incoming message
-        // Make sure it's a Hello (otherwise, ignore it and continue waiting)
+        // First block until receiving an incoming message
+		while(true){
+			GoBackNPacket packet = receivePacket();
+
+	        // Make sure it's a Hello (otherwise, ignore it and continue waiting)
+			if(packet.isHello()){
+				break;
+			}
+		}
+		
         // If it's a Hello, initialize expectedseqnum to 0
+		expectedseqnum = 0;
+		
         // Send an ACK back to the sender using the sendAck() method
+		sendAck(expectedseqnum);
+		
         // Call the receiveMessage() method to receive the message
+		receiveMessage();
 	}
 	
 	/**
 	 * Receive message from the sender
 	 */
 	private void receiveMessage() {
+		
+		byte seqnum;
+		
 		// STEP 3: Implement the main portion of the Go-back-N protocol
         // Contine processing Data packets until the Goodbye packet is received
-        // When Goodbye is received, close the socket and leave
-        // For each data packet received, check the sequence number
-        // If it was the expected one, print the data to the command line
-        // Send the appropriate ACK to the sender
+		while(true){
+			GoBackNPacket packet = receivePacket();
+			
+			// When Goodbye is received, close the socket and leave
+			if(packet.isGoodbye()){
+				break;
+			}
+			
+	        // For each data packet received, check the sequence number
+			seqnum = packet.getSequenceNumber();
+			
+	        // If it was the expected one, print the data to the command line
+			if(seqnum == expectedseqnum){
+				System.out.println(packet.getValue());
+			}
+			
+	        // Send the appropriate ACK to the sender
+			sendAck(seqnum);
+		}
 	}
 	
 	/**
