@@ -38,7 +38,15 @@ class GoBackNSender {
 	public GoBackNSender(String host, int port) {
   		// STEP 4: Fill in the GoBackNSender constructor
         // Initialize senderSocket
+		try{
+			senderSocket = new DatagramSocket(port);			
+		} catch(SocketException e){
+			System.out.println("Error creating SenderSocket.");
+		}
+		
         // Lookup the specified hostname using InetAddress.getByName()
+		
+		
         // Store the receiverAddress and receiverPort
         // Construct a Hello packet and send it to the receiver
         // Wait for an ACK

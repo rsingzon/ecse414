@@ -32,7 +32,7 @@ class GoBackNReceiver {
 		try{
 			receiverSocket = new DatagramSocket(senderPort);			
 		} catch(SocketException e){
-			System.out.println("Error creating receiverSocket" + e.getStackTrace());
+			System.out.println("Error creating receiverSocket");
 		}
 		
         // Then call waitForConnection()
