@@ -37,7 +37,7 @@ class GoBackNReceiver {
 		}
 		
         // Then call waitForConnection()
-		System.out.println("Waiting for connection");
+		System.out.println("\n\nWaiting for connection");
 		waitForConnection();
 		
 	}
@@ -106,7 +106,7 @@ class GoBackNReceiver {
 			
 	        // If it was the expected one, print the data to the command line
 			if(seqnum == expectedseqnum){
-				System.out.println(incomingPacket.getValue());
+				System.out.print(incomingPacket.getValue());
 
 				// Send the appropriate ACK to the sender
 				sendAck(expectedseqnum);

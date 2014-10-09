@@ -41,8 +41,7 @@ class GoBackNSender {
 		try{
 			senderSocket = new DatagramSocket();			
 		} catch(SocketException e){
-			System.out.println("Error creating SenderSocket.");
-			System.out.println(e + "\n");
+			System.out.println("Error creating SenderSocket.\n" + e + "\n");
 			System.exit(1);
 		}
 		
@@ -53,8 +52,7 @@ class GoBackNSender {
 			receiverPort = port;
 			
 		} catch(UnknownHostException e){
-			System.out.println("Error finding hostname");
-			System.out.println(e + "\n");
+			System.out.println("Error finding hostname\n" + e + "\n");
 			System.exit(1);
 		}
 		
@@ -67,12 +65,10 @@ class GoBackNSender {
 		try{
 			senderSocket.send(helloDatagramPacket);
 		} catch(IOException e){
-			System.out.println("An error occurred sending the Hello packet");
-			System.out.println(e + "\n");
+			System.out.println("An error occurred sending the Hello packet\n" + e + "\n");
 			System.exit(1);
 		}
 		
-		System.out.println("Debug");
         // Wait for an ACK
 		while(!helloPacket.isAck()){
 			try{
@@ -85,7 +81,7 @@ class GoBackNSender {
 			helloPacket = new GoBackNPacket(helloDatagramPacket);
 		}
 		
-		System.out.println("Hello packet successfully acknowledged");
+		System.out.println("Hello packet acknowledged");
 		
         // Initialize base and nextseqnum to zero
 		base = 0;
@@ -169,7 +165,7 @@ class GoBackNSender {
 			// Within the loop, first wait for an ACK using receiveAck(timeout)
 			try{
 				int seqNumDifference = base;
-				byte receivedSeqNum = receiveAck(50);
+				byte receivedSeqNum = (byte)(1+receiveAck(50));
 				
 				// After the ACK, update base and send new packets as appropriate
 				base = receivedSeqNum;
@@ -189,6 +185,11 @@ class GoBackNSender {
 				// Increment the sequence number, wrapping around if necessary
 				bytesSent = bytesSent + seqNumDifference;
 				nextseqnum = base;
+				
+				// Check that the number of packets to send does not exceed the message length
+				if((bytesSent + seqNumDifference) > length -1 ){
+					seqNumDifference = length - bytesSent;
+				}
 				
 				// Send the amount of packets which have been successfully ACK'ed
 				for(int i = 0; i < seqNumDifference; i++){
@@ -248,7 +249,7 @@ class GoBackNSender {
 		
 		// Send the message
 		gbnSender.send(message);
-		System.out.println("Sent a packet");
+		System.out.println("Message sent!");
 		
 		// Close the connection
 		gbnSender.close();
