@@ -39,18 +39,57 @@ class GoBackNSender {
   		// STEP 4: Fill in the GoBackNSender constructor
         // Initialize senderSocket
 		try{
-			senderSocket = new DatagramSocket(port);			
+			senderSocket = new DatagramSocket();			
 		} catch(SocketException e){
 			System.out.println("Error creating SenderSocket.");
+			System.out.println(e + "\n");
+			System.exit(1);
 		}
 		
         // Lookup the specified hostname using InetAddress.getByName()
-		
-		
         // Store the receiverAddress and receiverPort
-        // Construct a Hello packet and send it to the receiver
+		try{
+			receiverAddress = InetAddress.getByName(host); 
+			receiverPort = port;
+			
+		} catch(UnknownHostException e){
+			System.out.println("Error finding hostname");
+			System.out.println(e + "\n");
+			System.exit(1);
+		}
+		
+        // Construct a Hello packet and send it to the receiver		
+		GoBackNPacket helloPacket = new GoBackNPacket(GoBackNPacket.TYPE_HELLO, (byte)-1, (char)0);
+		DatagramPacket helloDatagramPacket = helloPacket.toDatagramPacket();
+		helloDatagramPacket.setAddress(receiverAddress);
+		helloDatagramPacket.setPort(port);
+		
+		try{
+			senderSocket.send(helloDatagramPacket);
+		} catch(IOException e){
+			System.out.println("An error occurred sending the Hello packet");
+			System.out.println(e + "\n");
+			System.exit(1);
+		}
+		
+		System.out.println("Debug");
         // Wait for an ACK
+		while(!helloPacket.isAck()){
+			try{
+				senderSocket.receive(helloDatagramPacket);
+			} catch(IOException e){
+				System.out.println("Error receiving the Hello ACK packet");
+				System.out.println(e + "\n");
+				System.exit(1);
+			}
+			helloPacket = new GoBackNPacket(helloDatagramPacket);
+		}
+		
+		System.out.println("Hello packet successfully acknowledged");
+		
         // Initialize base and nextseqnum to zero
+		base = 0;
+		nextseqnum = 0;
 	}
 	
 	
@@ -111,13 +150,68 @@ class GoBackNSender {
 	 */
 	public void send(String message) {
 		// STEP 5: Implement the main part of the Go-Back-N sender
-        // First send one window's worth of packets
+		
+		int length = message.length();
+		int bytesSent = 0;
+		
+        // First send one window's worth of packets 
+		for(int i = 0; i < N; i++){
+			nextseqnum = (byte)i;
+			sendData(nextseqnum, message.charAt(i));
+		}
+		
         // Then start a loop that iterates until the entire message is received
-        // Within the loop, first wait for an ACK using receiveAck(timeout)
-        // After the ACK, update base and send new packets as appropriate
-        // If receiveAck() times out, catch the exception and retransmit
+		while(bytesSent < length-1){
+
+			// BASE --> Sequence number of the oldest unacknowledged packet
+			// NEXTSEQNUM --> Sequence number of the next packet to be sent
+			
+			// Within the loop, first wait for an ACK using receiveAck(timeout)
+			try{
+				int seqNumDifference = base;
+				byte receivedSeqNum = receiveAck(50);
+				
+				// After the ACK, update base and send new packets as appropriate
+				base = receivedSeqNum;
+				
+				// Bytes range from [-128, 127], so integers casted into bytes
+				// will increment up to 127, then roll over to -128 and decrease to 0
+				
+				// Check if the bytes have wrapped around
+				if((seqNumDifference < 0 && receivedSeqNum >= 0) || (receivedSeqNum < 0 && seqNumDifference >=0)){
+					seqNumDifference = Math.abs(seqNumDifference + receivedSeqNum);
+				}
+				
+				else{
+					seqNumDifference = receivedSeqNum - seqNumDifference;
+				}				
+				
+				// Increment the sequence number, wrapping around if necessary
+				bytesSent = bytesSent + seqNumDifference;
+				nextseqnum = base;
+				
+				// Send the amount of packets which have been successfully ACK'ed
+				for(int i = 0; i < seqNumDifference; i++){
+					sendData((byte)(nextseqnum + i), message.charAt(bytesSent + i));					
+				}
+				
+			} catch(SocketTimeoutException e){
+				// If receiveAck() times out, catch the exception and retransmit
+				System.out.println("Timed out, retransmitting");
+				int packetsToSend = N;
+				
+				//Don't send more packets than the message length
+				if(bytesSent + N > length-1){
+					packetsToSend = length-1 - bytesSent;
+				}
+
+				//Send the window again
+				for(int i = 0; i < packetsToSend; i++){
+					sendData((byte)(nextseqnum + i), message.charAt(bytesSent+i));
+				}
+			}
+		}
 	}
-	
 	
 	/**
 	 * Send a goodbye packet
@@ -154,6 +248,7 @@ class GoBackNSender {
 		
 		// Send the message
 		gbnSender.send(message);
+		System.out.println("Sent a packet");
 		
 		// Close the connection
 		gbnSender.close();

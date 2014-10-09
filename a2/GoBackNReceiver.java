@@ -30,12 +30,14 @@ class GoBackNReceiver {
 		// STEP 1: Fill in this constructor method
         // Initialize receiverSocket as a DatagramSocket on the specified port
 		try{
-			receiverSocket = new DatagramSocket(senderPort);			
+			receiverSocket = new DatagramSocket(port);			
 		} catch(SocketException e){
-			System.out.println("Error creating receiverSocket");
+			System.out.println("Error creating receiverSocket" + e);
+			System.exit(1);
 		}
 		
         // Then call waitForConnection()
+		System.out.println("Waiting for connection");
 		waitForConnection();
 		
 	}
@@ -45,15 +47,25 @@ class GoBackNReceiver {
 	 */
 	private void waitForConnection() {
 		// STEP 2: Block until a Hello packet is received, then initialize the receiver
-        // First block until receiving an incoming message
-		while(true){
-			GoBackNPacket packet = receivePacket();
-
-	        // Make sure it's a Hello (otherwise, ignore it and continue waiting)
-			if(packet.isHello()){
-				break;
+        
+		// Create a dummy DatagramPacket
+		GoBackNPacket incomingPacket = new GoBackNPacket((byte)-1, (byte)-1, (char)0);
+		DatagramPacket incomingDatagramPacket = incomingPacket.toDatagramPacket();
+		
+		// First block until receiving an incoming message		
+		// Make sure it's a Hello (otherwise, ignore it and continue waiting)
+		while(!incomingPacket.isHello()){
+			try{
+				receiverSocket.receive(incomingDatagramPacket);
+				incomingPacket = new GoBackNPacket(incomingDatagramPacket);
+			} catch(IOException e){
+				System.out.println("An error occurred receiving a datagram packet" + e);			
+				System.exit(1);
 			}
 		}
+		
+		senderIPAddress = incomingDatagramPacket.getAddress();
+		senderPort = incomingDatagramPacket.getPort();		
 		
         // If it's a Hello, initialize expectedseqnum to 0
 		expectedseqnum = 0;
@@ -73,26 +85,43 @@ class GoBackNReceiver {
 		byte seqnum;
 		
 		// STEP 3: Implement the main portion of the Go-back-N protocol
+		
+		//Create a dummy Datagram packet
+		GoBackNPacket incomingPacket = new GoBackNPacket((byte)-1, (byte)-1, (char)0);
+		DatagramPacket incomingDatagramPacket = incomingPacket.toDatagramPacket();
+		
         // Contine processing Data packets until the Goodbye packet is received
-		while(true){
-			GoBackNPacket packet = receivePacket();
-			
-			// When Goodbye is received, close the socket and leave
-			if(packet.isGoodbye()){
-				break;
+		// When Goodbye is received, close the socket and leave
+		while(!incomingPacket.isGoodbye()){
+			try{
+				receiverSocket.receive(incomingDatagramPacket);
+				incomingPacket = new GoBackNPacket(incomingDatagramPacket);				
+			} catch(IOException e){
+				System.out.println("Error receiving a Goodbye packet" + e);
+				System.exit(1);
 			}
 			
 	        // For each data packet received, check the sequence number
-			seqnum = packet.getSequenceNumber();
+			seqnum = incomingPacket.getSequenceNumber();
 			
 	        // If it was the expected one, print the data to the command line
 			if(seqnum == expectedseqnum){
-				System.out.println(packet.getValue());
+				System.out.println(incomingPacket.getValue());
+
+				// Send the appropriate ACK to the sender
+				sendAck(expectedseqnum);
+				
+				// Increment the expected seqnum 
+				expectedseqnum = (byte)(expectedseqnum + 1);
 			}
 			
-	        // Send the appropriate ACK to the sender
-			sendAck(seqnum);
+			// Otherwise, send an ACK for the last packet
+			else{
+				sendAck((byte)(expectedseqnum -1));
+			}
 		}
+		// Close the connection
+		receiverSocket.close();
 	}
 	
 	/**
