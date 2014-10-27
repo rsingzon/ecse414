@@ -1,6 +1,9 @@
 /**
  * ECSE 414
  * Assignment 3
+ * 
+ * Singzon, Ryan
+ * 260397455
  */
 import java.util.*;
 
@@ -43,11 +46,19 @@ public class LongestPrefixMatcher {
 		int mask = 0;
 		int outInterface = 0;
 		
-
 		// STEP 1: 
 		// Determine the values of prefix, mask, and outInterface to put in the table for this entry 
+		outInterface = entry.getInterface();
+		System.out.println("Entry interface: "+ entry.getInterface());
+		System.out.println("Entry start address: " +Integer.toHexString(entry.getStartAddress()));
+		System.out.println("Entry end address: " + Integer.toHexString(entry.getEndAddress()));
+
+		prefix = entry.getEndAddress() & entry.getStartAddress();
+		System.out.println("Prefix: "+Integer.toHexString(prefix));
 		
-		
+		mask = ~(entry.getEndAddress() ^ entry.getStartAddress());
+		System.out.println("Mask: "+Integer.toHexString(mask));
+		System.out.println();
 		// (Put your code above here)
 		
 		// Store this entry in prefixTable
@@ -62,6 +73,8 @@ public class LongestPrefixMatcher {
 	public int getInterfaceFor(int address) {
 		// STEP 2:
 		// Determine which interface a packet with the given destination address should be forwarded on.
+		
+		return 0;
 	}
 	
 	

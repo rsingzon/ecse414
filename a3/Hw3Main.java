@@ -1,6 +1,9 @@
 /**
  * ECSE 414
  * Assignment 3
+ * 
+ * Singzon, Ryan
+ * 260397455
  */
 import java.io.*;
 import java.net.InetAddress;
@@ -12,10 +15,11 @@ import java.util.*;
  * forward, performs longest prefix matching for each IP address, and then prints the results to
  * file or outputs them to the console.
  * 
- * The program is executed from the command line and takes up to four arguments: 1. The name of the
- * file containing the forwarding table information; 2. The name of the file containing the list of
- * IP addresses to test (map to interfaces); 3. (optional) A file in which to write the prefix
- * table; 4. (optional) A file in which to write the IP-to-interface mappings for test IP addresses.
+ * The program is executed from the command line and takes up to four arguments: 
+ * 		1. The name of the file containing the forwarding table information; 
+ * 		2. The name of the file containing the list of IP addresses to test (map to interfaces); 
+ * 		3. (optional) A file in which to write the prefix table; 
+ * 		4. (optional) A file in which to write the IP-to-interface mappings for test IP addresses.
  * The last two arguments are optional, and if they are not specified then the output will be
  * displayed in the console.
  * 
