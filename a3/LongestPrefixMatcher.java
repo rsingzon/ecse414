@@ -49,15 +49,23 @@ public class LongestPrefixMatcher {
 		// STEP 1: 
 		// Determine the values of prefix, mask, and outInterface to put in the table for this entry 
 		outInterface = entry.getInterface();
-		System.out.println("Entry interface: "+ entry.getInterface());
-		System.out.println("Entry start address: " +Integer.toHexString(entry.getStartAddress()));
-		System.out.println("Entry end address: " + Integer.toHexString(entry.getEndAddress()));
-
+		
+		// The prefix is the same as the first bits in the starting address
 		prefix = entry.getEndAddress() & entry.getStartAddress();
 		System.out.println("Prefix: "+Integer.toHexString(prefix));
 		
-		mask = ~(entry.getEndAddress() ^ entry.getStartAddress());
-		System.out.println("Mask: "+Integer.toHexString(mask));
+		// Find the bits that change between the start and end addresses by XOR'ing them
+		int changedBits = entry.getEndAddress() ^ entry.getStartAddress();
+		
+		// Get the position of the largest bit that has been changed
+		int largestChangedBitPosition = (int) Math.ceil(Math.log(changedBits)/Math.log(2));
+		
+		// Get an integer that is all 1's after the largest bit that was changed
+		int mask_inverse = (int)(Math.pow(2, largestChangedBitPosition)-1);
+		
+		// NOT the mask inverse 
+		mask = (0x7fffffff - mask_inverse) | 0x80000000;
+		System.out.println("Mask: " + Integer.toHexString(mask));
 		System.out.println();
 		// (Put your code above here)
 		
