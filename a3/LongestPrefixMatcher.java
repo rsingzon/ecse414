@@ -50,6 +50,9 @@ public class LongestPrefixMatcher {
 		// Determine the values of prefix, mask, and outInterface to put in the table for this entry 
 		outInterface = entry.getInterface();
 		
+		System.out.println("Start: "+Integer.toHexString(entry.getStartAddress()));
+		System.out.println("End:   "+Integer.toHexString(entry.getEndAddress()));
+		
 		// The prefix is the same as the first bits in the starting address
 		prefix = entry.getEndAddress() & entry.getStartAddress();
 		System.out.println("Prefix: "+Integer.toHexString(prefix));
@@ -61,10 +64,10 @@ public class LongestPrefixMatcher {
 		int largestChangedBitPosition = (int) Math.ceil(Math.log(changedBits)/Math.log(2));
 		
 		// Get an integer that is all 1's after the largest bit that was changed
-		int mask_inverse = (int)(Math.pow(2, largestChangedBitPosition)-1);
+		int maskInverse = (int)(Math.pow(2, largestChangedBitPosition)-1);
 		
 		// NOT the mask inverse 
-		mask = (0x7fffffff - mask_inverse) | 0x80000000;
+		mask = (0x7fffffff - maskInverse) | 0x80000000;
 		System.out.println("Mask: " + Integer.toHexString(mask));
 		System.out.println();
 		// (Put your code above here)
@@ -82,7 +85,44 @@ public class LongestPrefixMatcher {
 		// STEP 2:
 		// Determine which interface a packet with the given destination address should be forwarded on.
 		
-		return 0;
+		int outInterface = 0;
+		// Iterate through the prefix table until the proper interface is found
+		for(LongestPrefixEntry prefixEntry : prefixTable){
+			outInterface = prefixEntry.getOutInterface();
+			
+			// AND the mask and the prefix to get the actual prefix
+			/*
+			 * How to check which interface the thing should be in:
+			 * 1. Turn the MSB of both the prefix and the input IP address
+			 * 		to 0 so that all IP addresses are positive integers
+			 * 2. Check if the IP address is within the range of the start and end addresses
+			 * 3. If yes, return the current interface
+			 */
+			
+			System.out.println("Interface " + outInterface);
+			// First get the start and end addresses
+			int startAddress = prefixEntry.getPrefix();
+			
+			// Get the end address by taking the NOT of the mask and AND'ing it with the prefix
+			int maskInverse = ~prefixEntry.getMask();
+			int endAddress = maskInverse | prefixEntry.getPrefix();
+			System.out.println("End address: "+Integer.toHexString(endAddress));
+			
+			// Set the MSB of the input IP and the start and end addresses to zero so they 
+			// are always positive integers
+			boolean startMSB = (0x80000000 & startAddress) == 0x80000000;
+			boolean endMSB =   (0x80000000 & endAddress) == 0x80000000;
+
+			System.out.println(startMSB);
+			System.out.println(endMSB);
+			
+			System.out.println();
+			
+		}
+		
+		System.out.println("DONE\n");
+		
+		return outInterface;
 	}
 	
 	
