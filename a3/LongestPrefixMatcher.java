@@ -85,7 +85,7 @@ public class LongestPrefixMatcher {
 		// STEP 2:
 		// Determine which interface a packet with the given destination address should be forwarded on.
 		
-		int outInterface = 0;
+		int outInterface = -1;
 		// Iterate through the prefix table until the proper interface is found
 		for(LongestPrefixEntry prefixEntry : prefixTable){
 			outInterface = prefixEntry.getOutInterface();
@@ -110,19 +110,31 @@ public class LongestPrefixMatcher {
 			
 			// Set the MSB of the input IP and the start and end addresses to zero so they 
 			// are always positive integers
-			boolean startMSB = (0x80000000 & startAddress) == 0x80000000;
-			boolean endMSB =   (0x80000000 & endAddress) == 0x80000000;
-
+			boolean startMSB =   (0x80000000 & startAddress) == 0x80000000;
+			boolean endMSB =     (0x80000000 & endAddress)   == 0x80000000;
+			boolean addressMSB = (0x80000000 & address)      == 0x80000000;
+			
+			startAddress = startAddress & 0x7fffffff;
+			endAddress = endAddress & 0x7fffffff;
+			
+			int maskedAddress = address & 0x7fffffff;
+			System.out.println("Address " + (address));
+			System.out.println("Masked  " + (maskedAddress));
+			
+			System.out.println(startAddress);
+			System.out.println(endAddress);
 			System.out.println(startMSB);
-			System.out.println(endMSB);
-			
+			System.out.println(addressMSB);
+
 			System.out.println();
-			
+			// Check if the address lies betweeen the two other addresses
+			if(maskedAddress < endAddress && maskedAddress >= startAddress){
+				if(startMSB == addressMSB){
+					return outInterface;
+				}
+			}
 		}
-		
-		System.out.println("DONE\n");
-		
-		return outInterface;
+		return defaultInterface;
 	}
 	
 	
