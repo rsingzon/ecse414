@@ -128,10 +128,21 @@ public class LongestPrefixMatcher {
 
 			System.out.println();
 			// Check if the address lies betweeen the two other addresses
-			if(maskedAddress < endAddress && maskedAddress >= startAddress){
-				if(startMSB == addressMSB){
+			
+			/**
+			 * Cases:
+			 * 
+			 * 
+			 */
+			
+			
+			if(startMSB == addressMSB){
+				if(maskedAddress < endAddress && maskedAddress >= startAddress){
 					return outInterface;
 				}
+			}
+			else{
+				
 			}
 		}
 		return defaultInterface;
