@@ -62,6 +62,11 @@ public class LongestPrefixMatcher {
 		// Get an integer that is all 1's after the largest bit that was changed
 		int maskInverse = (int)(Math.pow(2, largestChangedBitPosition)-1);
 		
+		// Manually set the mask for IP ranges that vary by only 1 bit due to rounding 
+		if(changedBits == 1){
+			maskInverse = 1;
+		}
+		
 		// NOT the mask inverse 
 		mask = (0x7fffffff - maskInverse) | 0x80000000;
 		// (Put your code above here)
@@ -101,9 +106,15 @@ public class LongestPrefixMatcher {
 			
 			int maskedAddress = address & 0x7fffffff;
 
-			// Check if the address lies between the two other addresses
+			// Check if the address lies between the start and end addresses
 			if(startMSB == addressMSB){
-				if(maskedAddress < endAddress && maskedAddress >= startAddress){
+				if(maskedAddress <= endAddress && maskedAddress >= startAddress){
+					return outInterface;
+				}
+				else if(maskedAddress == startAddress){
+					return outInterface;
+				}
+				else if(maskedAddress == endAddress){
 					return outInterface;
 				}
 			}
