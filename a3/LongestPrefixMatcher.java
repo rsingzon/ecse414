@@ -50,12 +50,8 @@ public class LongestPrefixMatcher {
 		// Determine the values of prefix, mask, and outInterface to put in the table for this entry 
 		outInterface = entry.getInterface();
 		
-		System.out.println("Start: "+Integer.toHexString(entry.getStartAddress()));
-		System.out.println("End:   "+Integer.toHexString(entry.getEndAddress()));
-		
 		// The prefix is the same as the first bits in the starting address
 		prefix = entry.getEndAddress() & entry.getStartAddress();
-		System.out.println("Prefix: "+Integer.toHexString(prefix));
 		
 		// Find the bits that change between the start and end addresses by XOR'ing them
 		int changedBits = entry.getEndAddress() ^ entry.getStartAddress();
@@ -68,8 +64,6 @@ public class LongestPrefixMatcher {
 		
 		// NOT the mask inverse 
 		mask = (0x7fffffff - maskInverse) | 0x80000000;
-		System.out.println("Mask: " + Integer.toHexString(mask));
-		System.out.println();
 		// (Put your code above here)
 		
 		// Store this entry in prefixTable
@@ -90,59 +84,28 @@ public class LongestPrefixMatcher {
 		for(LongestPrefixEntry prefixEntry : prefixTable){
 			outInterface = prefixEntry.getOutInterface();
 			
-			// AND the mask and the prefix to get the actual prefix
-			/*
-			 * How to check which interface the thing should be in:
-			 * 1. Turn the MSB of both the prefix and the input IP address
-			 * 		to 0 so that all IP addresses are positive integers
-			 * 2. Check if the IP address is within the range of the start and end addresses
-			 * 3. If yes, return the current interface
-			 */
-			
-			System.out.println("Interface " + outInterface);
 			// First get the start and end addresses
 			int startAddress = prefixEntry.getPrefix();
 			
 			// Get the end address by taking the NOT of the mask and AND'ing it with the prefix
 			int maskInverse = ~prefixEntry.getMask();
 			int endAddress = maskInverse | prefixEntry.getPrefix();
-			System.out.println("End address: "+Integer.toHexString(endAddress));
 			
 			// Set the MSB of the input IP and the start and end addresses to zero so they 
 			// are always positive integers
 			boolean startMSB =   (0x80000000 & startAddress) == 0x80000000;
-			boolean endMSB =     (0x80000000 & endAddress)   == 0x80000000;
 			boolean addressMSB = (0x80000000 & address)      == 0x80000000;
 			
 			startAddress = startAddress & 0x7fffffff;
 			endAddress = endAddress & 0x7fffffff;
 			
 			int maskedAddress = address & 0x7fffffff;
-			System.out.println("Address " + (address));
-			System.out.println("Masked  " + (maskedAddress));
-			
-			System.out.println(startAddress);
-			System.out.println(endAddress);
-			System.out.println(startMSB);
-			System.out.println(addressMSB);
 
-			System.out.println();
-			// Check if the address lies betweeen the two other addresses
-			
-			/**
-			 * Cases:
-			 * 
-			 * 
-			 */
-			
-			
+			// Check if the address lies between the two other addresses
 			if(startMSB == addressMSB){
 				if(maskedAddress < endAddress && maskedAddress >= startAddress){
 					return outInterface;
 				}
-			}
-			else{
-				
 			}
 		}
 		return defaultInterface;
