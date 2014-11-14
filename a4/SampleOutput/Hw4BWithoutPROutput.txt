@@ -1,0 +1,2903 @@
+Successfully loaded network from testNetwork1.txt
+3 nodes, and 6 edges
+
+===========================================================
+T=0 (Before any messages are exchanged)
+-----------------------------------------------------------
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	Inf	Inf
+Y	|	Inf	Inf
+Z	|	Inf	Inf
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	4 (Y)
+Z	50 (Z)
+
+-----------------------------------------------------------
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	Inf	Inf
+Y	|	Inf	Inf
+Z	|	Inf	Inf
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	4 (X)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	Inf	Inf
+Y	|	Inf	Inf
+Z	|	Inf	Inf
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	50 (X)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=1
+-----------------------------------------------------------
+Updating node X
+Something changed at node X.  Notifying neighbors...
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	4	50
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	4 (Y)
+Z	5 (Y)
+
+-----------------------------------------------------------
+Updating node Y
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	50
+Y	|	4	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	4 (X)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+Something changed at node Z.  Notifying neighbors...
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	4
+Y	|	4	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	5 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=2
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	4	5
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	4 (Y)
+Z	5 (Y)
+
+-----------------------------------------------------------
+Updating node Y
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	5
+Y	|	4	1
+Z	|	5	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	4 (X)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	4
+Y	|	4	0
+Z	|	5	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	5 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=3 (Increasing cost of link x-y from 4 to 60)
+Something changed at node X.  Notifying neighbors...
+Something changed at node Y.  Notifying neighbors...
+-----------------------------------------------------------
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	4	5
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	5
+Y	|	4	1
+Z	|	5	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	6 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	4
+Y	|	4	0
+Z	|	5	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	5 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=4
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	6	5
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	5
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	6 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+Something changed at node Z.  Notifying neighbors...
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	6
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	7 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=5
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	6	7
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+Something changed at node Y.  Notifying neighbors...
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	7
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	8 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	6
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	7 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=6
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	8	7
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	7
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	8 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+Something changed at node Z.  Notifying neighbors...
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	8
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	9 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=7
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	8	9
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+Something changed at node Y.  Notifying neighbors...
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	9
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	10 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	8
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	9 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=8
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	10	9
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	9
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	10 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+Something changed at node Z.  Notifying neighbors...
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	10
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	11 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=9
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	10	11
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+Something changed at node Y.  Notifying neighbors...
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	11
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	12 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	10
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	11 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=10
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	12	11
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	11
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	12 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+Something changed at node Z.  Notifying neighbors...
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	12
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	13 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=11
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	12	13
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+Something changed at node Y.  Notifying neighbors...
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	13
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	14 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	12
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	13 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=12
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	14	13
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	13
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	14 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+Something changed at node Z.  Notifying neighbors...
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	14
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	15 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=13
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	14	15
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+Something changed at node Y.  Notifying neighbors...
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	15
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	16 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	14
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	15 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=14
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	16	15
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	15
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	16 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+Something changed at node Z.  Notifying neighbors...
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	16
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	17 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=15
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	16	17
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+Something changed at node Y.  Notifying neighbors...
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	17
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	18 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	16
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	17 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=16
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	18	17
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	17
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	18 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+Something changed at node Z.  Notifying neighbors...
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	18
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	19 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=17
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	18	19
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+Something changed at node Y.  Notifying neighbors...
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	19
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	20 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	18
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	19 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=18
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	20	19
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	19
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	20 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+Something changed at node Z.  Notifying neighbors...
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	20
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	21 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=19
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	20	21
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+Something changed at node Y.  Notifying neighbors...
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	21
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	22 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	20
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	21 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=20
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	22	21
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	21
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	22 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+Something changed at node Z.  Notifying neighbors...
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	22
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	23 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=21
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	22	23
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+Something changed at node Y.  Notifying neighbors...
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	23
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	24 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	22
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	23 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=22
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	24	23
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	23
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	24 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+Something changed at node Z.  Notifying neighbors...
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	24
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	25 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=23
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	24	25
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+Something changed at node Y.  Notifying neighbors...
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	25
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	26 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	24
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	25 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=24
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	26	25
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	25
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	26 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+Something changed at node Z.  Notifying neighbors...
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	26
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	27 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=25
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	26	27
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+Something changed at node Y.  Notifying neighbors...
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	27
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	28 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	26
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	27 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=26
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	28	27
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	27
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	28 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+Something changed at node Z.  Notifying neighbors...
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	28
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	29 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=27
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	28	29
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+Something changed at node Y.  Notifying neighbors...
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	29
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	30 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	28
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	29 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=28
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	30	29
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	29
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	30 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+Something changed at node Z.  Notifying neighbors...
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	30
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	31 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=29
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	30	31
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+Something changed at node Y.  Notifying neighbors...
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	31
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	32 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	30
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	31 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=30
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	32	31
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	31
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	32 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+Something changed at node Z.  Notifying neighbors...
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	32
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	33 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=31
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	32	33
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+Something changed at node Y.  Notifying neighbors...
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	33
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	34 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	32
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	33 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=32
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	34	33
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	33
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	34 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+Something changed at node Z.  Notifying neighbors...
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	34
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	35 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=33
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	34	35
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+Something changed at node Y.  Notifying neighbors...
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	35
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	36 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	34
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	35 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=34
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	36	35
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	35
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	36 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+Something changed at node Z.  Notifying neighbors...
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	36
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	37 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=35
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	36	37
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+Something changed at node Y.  Notifying neighbors...
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	37
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	38 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	36
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	37 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=36
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	38	37
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	37
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	38 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+Something changed at node Z.  Notifying neighbors...
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	38
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	39 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=37
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	38	39
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+Something changed at node Y.  Notifying neighbors...
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	39
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	40 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	38
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	39 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=38
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	40	39
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	39
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	40 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+Something changed at node Z.  Notifying neighbors...
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	40
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	41 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=39
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	40	41
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+Something changed at node Y.  Notifying neighbors...
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	41
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	42 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	40
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	41 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=40
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	42	41
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	41
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	42 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+Something changed at node Z.  Notifying neighbors...
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	42
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	43 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=41
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	42	43
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+Something changed at node Y.  Notifying neighbors...
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	43
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	44 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	42
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	43 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=42
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	44	43
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	43
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	44 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+Something changed at node Z.  Notifying neighbors...
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	44
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	45 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=43
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	44	45
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+Something changed at node Y.  Notifying neighbors...
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	45
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	46 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	44
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	45 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=44
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	46	45
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	45
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	46 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+Something changed at node Z.  Notifying neighbors...
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	46
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	47 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=45
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	46	47
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+Something changed at node Y.  Notifying neighbors...
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	47
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	48 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	46
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	47 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=46
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	48	47
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	47
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	48 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+Something changed at node Z.  Notifying neighbors...
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	48
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	49 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=47
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	48	49
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+Something changed at node Y.  Notifying neighbors...
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	49
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	50 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	48
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	49 (Y)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=48
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	50	49
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	49
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	50 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+Something changed at node Z.  Notifying neighbors...
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	50
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	50 (X)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=49
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	50	50
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+Something changed at node Y.  Notifying neighbors...
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	50
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	51 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	50
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	50 (X)
+Y	1 (Y)
+Z	0 (Z)
+
+===========================================================
+T=50
+-----------------------------------------------------------
+Updating node X
+
+Latest messages received by node X:
+      	| Neighbors
+Dest. 	|	Y	Z
+-------------------------------
+X	|	51	50
+Y	|	0	1
+Z	|	1	0
+ 
+Distance vector and forwarding table for node X:
+Dest.	Cost (Next Hop)
+-------------------------
+X	0 (X)
+Y	51 (Z)
+Z	50 (Z)
+
+-----------------------------------------------------------
+Updating node Y
+
+Latest messages received by node Y:
+      	| Neighbors
+Dest. 	|	X	Z
+-------------------------------
+X	|	0	50
+Y	|	51	1
+Z	|	50	0
+ 
+Distance vector and forwarding table for node Y:
+Dest.	Cost (Next Hop)
+-------------------------
+X	51 (Z)
+Y	0 (Y)
+Z	1 (Z)
+
+-----------------------------------------------------------
+Updating node Z
+
+Latest messages received by node Z:
+      	| Neighbors
+Dest. 	|	X	Y
+-------------------------------
+X	|	0	51
+Y	|	51	0
+Z	|	50	1
+ 
+Distance vector and forwarding table for node Z:
+Dest.	Cost (Next Hop)
+-------------------------
+X	50 (X)
+Y	1 (Y)
+Z	0 (Z)
+

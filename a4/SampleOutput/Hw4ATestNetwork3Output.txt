@@ -1,0 +1,453 @@
+Successfully loaded network from testNetwork3.txt
+5 nodes, and 12 edges
+
+===========================================================
+T=0 (Before any messages are exchanged)
+-----------------------------------------------------------
+
+Latest messages received by node u:
+      	| Neighbors
+Dest. 	|	v	y
+-------------------------------
+u	|	Inf	Inf
+v	|	Inf	Inf
+x	|	Inf	Inf
+y	|	Inf	Inf
+z	|	Inf	Inf
+ 
+Distance vector and forwarding table for node u:
+Dest.	Cost (Next Hop)
+-------------------------
+u	0 (u)
+v	1 (v)
+x	Inf (null)
+y	2 (y)
+z	Inf (null)
+
+-----------------------------------------------------------
+
+Latest messages received by node v:
+      	| Neighbors
+Dest. 	|	u	x	z
+---------------------------------------
+u	|	Inf	Inf	Inf
+v	|	Inf	Inf	Inf
+x	|	Inf	Inf	Inf
+y	|	Inf	Inf	Inf
+z	|	Inf	Inf	Inf
+ 
+Distance vector and forwarding table for node v:
+Dest.	Cost (Next Hop)
+-------------------------
+u	1 (u)
+v	0 (v)
+x	3 (x)
+y	Inf (null)
+z	6 (z)
+
+-----------------------------------------------------------
+
+Latest messages received by node x:
+      	| Neighbors
+Dest. 	|	v	y	z
+---------------------------------------
+u	|	Inf	Inf	Inf
+v	|	Inf	Inf	Inf
+x	|	Inf	Inf	Inf
+y	|	Inf	Inf	Inf
+z	|	Inf	Inf	Inf
+ 
+Distance vector and forwarding table for node x:
+Dest.	Cost (Next Hop)
+-------------------------
+u	Inf (null)
+v	3 (v)
+x	0 (x)
+y	3 (y)
+z	2 (z)
+
+-----------------------------------------------------------
+
+Latest messages received by node y:
+      	| Neighbors
+Dest. 	|	u	x
+-------------------------------
+u	|	Inf	Inf
+v	|	Inf	Inf
+x	|	Inf	Inf
+y	|	Inf	Inf
+z	|	Inf	Inf
+ 
+Distance vector and forwarding table for node y:
+Dest.	Cost (Next Hop)
+-------------------------
+u	2 (u)
+v	Inf (null)
+x	3 (x)
+y	0 (y)
+z	Inf (null)
+
+-----------------------------------------------------------
+
+Latest messages received by node z:
+      	| Neighbors
+Dest. 	|	v	x
+-------------------------------
+u	|	Inf	Inf
+v	|	Inf	Inf
+x	|	Inf	Inf
+y	|	Inf	Inf
+z	|	Inf	Inf
+ 
+Distance vector and forwarding table for node z:
+Dest.	Cost (Next Hop)
+-------------------------
+u	Inf (null)
+v	6 (v)
+x	2 (x)
+y	Inf (null)
+z	0 (z)
+
+===========================================================
+T=1
+-----------------------------------------------------------
+Updating node u
+Something changed at node u.  Notifying neighbors...
+
+Latest messages received by node u:
+      	| Neighbors
+Dest. 	|	v	y
+-------------------------------
+u	|	1	2
+v	|	0	Inf
+x	|	3	3
+y	|	Inf	0
+z	|	6	Inf
+ 
+Distance vector and forwarding table for node u:
+Dest.	Cost (Next Hop)
+-------------------------
+u	0 (u)
+v	1 (v)
+x	4 (v)
+y	2 (y)
+z	7 (v)
+
+-----------------------------------------------------------
+Updating node v
+Something changed at node v.  Notifying neighbors...
+
+Latest messages received by node v:
+      	| Neighbors
+Dest. 	|	u	x	z
+---------------------------------------
+u	|	0	Inf	Inf
+v	|	1	3	6
+x	|	Inf	0	2
+y	|	2	3	Inf
+z	|	Inf	2	0
+ 
+Distance vector and forwarding table for node v:
+Dest.	Cost (Next Hop)
+-------------------------
+u	1 (u)
+v	0 (v)
+x	3 (x)
+y	3 (u)
+z	5 (x)
+
+-----------------------------------------------------------
+Updating node x
+Something changed at node x.  Notifying neighbors...
+
+Latest messages received by node x:
+      	| Neighbors
+Dest. 	|	v	y	z
+---------------------------------------
+u	|	1	2	Inf
+v	|	0	Inf	6
+x	|	3	3	2
+y	|	Inf	0	Inf
+z	|	6	Inf	0
+ 
+Distance vector and forwarding table for node x:
+Dest.	Cost (Next Hop)
+-------------------------
+u	4 (v)
+v	3 (v)
+x	0 (x)
+y	3 (y)
+z	2 (z)
+
+-----------------------------------------------------------
+Updating node y
+Something changed at node y.  Notifying neighbors...
+
+Latest messages received by node y:
+      	| Neighbors
+Dest. 	|	u	x
+-------------------------------
+u	|	0	Inf
+v	|	1	3
+x	|	Inf	0
+y	|	2	3
+z	|	Inf	2
+ 
+Distance vector and forwarding table for node y:
+Dest.	Cost (Next Hop)
+-------------------------
+u	2 (u)
+v	3 (u)
+x	3 (x)
+y	0 (y)
+z	5 (x)
+
+-----------------------------------------------------------
+Updating node z
+Something changed at node z.  Notifying neighbors...
+
+Latest messages received by node z:
+      	| Neighbors
+Dest. 	|	v	x
+-------------------------------
+u	|	1	Inf
+v	|	0	3
+x	|	3	0
+y	|	Inf	3
+z	|	6	2
+ 
+Distance vector and forwarding table for node z:
+Dest.	Cost (Next Hop)
+-------------------------
+u	7 (v)
+v	5 (x)
+x	2 (x)
+y	5 (x)
+z	0 (z)
+
+===========================================================
+T=2
+-----------------------------------------------------------
+Updating node u
+Something changed at node u.  Notifying neighbors...
+
+Latest messages received by node u:
+      	| Neighbors
+Dest. 	|	v	y
+-------------------------------
+u	|	1	2
+v	|	0	3
+x	|	3	3
+y	|	3	0
+z	|	5	5
+ 
+Distance vector and forwarding table for node u:
+Dest.	Cost (Next Hop)
+-------------------------
+u	0 (u)
+v	1 (v)
+x	4 (v)
+y	2 (y)
+z	6 (v)
+
+-----------------------------------------------------------
+Updating node v
+
+Latest messages received by node v:
+      	| Neighbors
+Dest. 	|	u	x	z
+---------------------------------------
+u	|	0	4	7
+v	|	1	3	5
+x	|	4	0	2
+y	|	2	3	5
+z	|	7	2	0
+ 
+Distance vector and forwarding table for node v:
+Dest.	Cost (Next Hop)
+-------------------------
+u	1 (u)
+v	0 (v)
+x	3 (x)
+y	3 (u)
+z	5 (x)
+
+-----------------------------------------------------------
+Updating node x
+
+Latest messages received by node x:
+      	| Neighbors
+Dest. 	|	v	y	z
+---------------------------------------
+u	|	1	2	7
+v	|	0	3	5
+x	|	3	3	2
+y	|	3	0	5
+z	|	5	5	0
+ 
+Distance vector and forwarding table for node x:
+Dest.	Cost (Next Hop)
+-------------------------
+u	4 (v)
+v	3 (v)
+x	0 (x)
+y	3 (y)
+z	2 (z)
+
+-----------------------------------------------------------
+Updating node y
+
+Latest messages received by node y:
+      	| Neighbors
+Dest. 	|	u	x
+-------------------------------
+u	|	0	4
+v	|	1	3
+x	|	4	0
+y	|	2	3
+z	|	7	2
+ 
+Distance vector and forwarding table for node y:
+Dest.	Cost (Next Hop)
+-------------------------
+u	2 (u)
+v	3 (u)
+x	3 (x)
+y	0 (y)
+z	5 (x)
+
+-----------------------------------------------------------
+Updating node z
+Something changed at node z.  Notifying neighbors...
+
+Latest messages received by node z:
+      	| Neighbors
+Dest. 	|	v	x
+-------------------------------
+u	|	1	4
+v	|	0	3
+x	|	3	0
+y	|	3	3
+z	|	5	2
+ 
+Distance vector and forwarding table for node z:
+Dest.	Cost (Next Hop)
+-------------------------
+u	6 (x)
+v	5 (x)
+x	2 (x)
+y	5 (x)
+z	0 (z)
+
+===========================================================
+T=3
+-----------------------------------------------------------
+Updating node u
+
+Latest messages received by node u:
+      	| Neighbors
+Dest. 	|	v	y
+-------------------------------
+u	|	1	2
+v	|	0	3
+x	|	3	3
+y	|	3	0
+z	|	5	5
+ 
+Distance vector and forwarding table for node u:
+Dest.	Cost (Next Hop)
+-------------------------
+u	0 (u)
+v	1 (v)
+x	4 (v)
+y	2 (y)
+z	6 (v)
+
+-----------------------------------------------------------
+Updating node v
+
+Latest messages received by node v:
+      	| Neighbors
+Dest. 	|	u	x	z
+---------------------------------------
+u	|	0	4	6
+v	|	1	3	5
+x	|	4	0	2
+y	|	2	3	5
+z	|	6	2	0
+ 
+Distance vector and forwarding table for node v:
+Dest.	Cost (Next Hop)
+-------------------------
+u	1 (u)
+v	0 (v)
+x	3 (x)
+y	3 (u)
+z	5 (x)
+
+-----------------------------------------------------------
+Updating node x
+
+Latest messages received by node x:
+      	| Neighbors
+Dest. 	|	v	y	z
+---------------------------------------
+u	|	1	2	6
+v	|	0	3	5
+x	|	3	3	2
+y	|	3	0	5
+z	|	5	5	0
+ 
+Distance vector and forwarding table for node x:
+Dest.	Cost (Next Hop)
+-------------------------
+u	4 (v)
+v	3 (v)
+x	0 (x)
+y	3 (y)
+z	2 (z)
+
+-----------------------------------------------------------
+Updating node y
+
+Latest messages received by node y:
+      	| Neighbors
+Dest. 	|	u	x
+-------------------------------
+u	|	0	4
+v	|	1	3
+x	|	4	0
+y	|	2	3
+z	|	6	2
+ 
+Distance vector and forwarding table for node y:
+Dest.	Cost (Next Hop)
+-------------------------
+u	2 (u)
+v	3 (u)
+x	3 (x)
+y	0 (y)
+z	5 (x)
+
+-----------------------------------------------------------
+Updating node z
+
+Latest messages received by node z:
+      	| Neighbors
+Dest. 	|	v	x
+-------------------------------
+u	|	1	4
+v	|	0	3
+x	|	3	0
+y	|	3	3
+z	|	5	2
+ 
+Distance vector and forwarding table for node z:
+Dest.	Cost (Next Hop)
+-------------------------
+u	6 (x)
+v	5 (x)
+x	2 (x)
+y	5 (x)
+z	0 (z)
+
