@@ -322,18 +322,23 @@ public class Node implements Comparable<Node> {
 		// STEP 1: Fill in this method
 	
 		// Loop over all possible destinations
-		for(Node destination : getDestinations()){
-
-			float costToDest = getCostToNeighbor(destination);
-
-			// Find the cost of the neighbours of every destination
-			Collection<Node> destNeighbors = destination.getNeighbors();
-			for(Node neighbor : destNeighbors){
-						
-			}	
-		}
 		// Do Bellman-Ford updates using this node's local info
 		// If something changed, notify this node's neighbors by calling notifyNeighbors()
+		for(Node neighbor : getNeighbors()){
+
+			float costToNeighbor = getCostToNeighbor(neighbor);
+
+			// Find the cost of the neighbours of every destination
+			Collection<Node> reachableNodes = neighbor.getNeighbors();
+			for(Node destination : reachableNodes){
+
+				// Update the forwarding table if the cost from the neighbour is less
+				if(getCostFromNeighborTo(neighbor, destination) < getCostToNeighbor(destination)){
+					System.out.println("Node " + this.name + " changed.  Notifying neighbours");
+					notifyNeighbors();
+				}	
+			}	
+		}
 	}
 	
 	/**
@@ -343,7 +348,20 @@ public class Node implements Comparable<Node> {
 		// STEP 2: Fill in this method
 		
 		// Create a message containing the contents of this node's distance vector
+		HashMap<Node, Float> distances = new HashMap<Node,Float>(); 
+		
+		// Iterate through each neighbour and notify it of the change
+		for(Node neighbor : getNeighbors()){
+			distances.put(neighbor, getCostToNeighbor(neighbor));
+		}
+		
+		Message message = new Message(this, distances);
+		
 		// (Not doing poisoned reverse in this implementation)
 		// Send the message to every neighbor
+		for(Node neighbor : getNeighbors()){
+			neighbor.sendMessage(message);
+		}
+		
 	}
 }
