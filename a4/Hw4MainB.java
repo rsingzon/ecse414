@@ -35,7 +35,7 @@ public class Hw4MainB {
 		try {
 			// Load the network from file
 			File networkFile = new File(fileName);
-			Network network = new Network(networkFile);
+			Network network = new PoisonedReverseNetwork(networkFile);
 			
 			// Print initial distance vectors and forwarding tables
 			System.out.println("===========================================================");

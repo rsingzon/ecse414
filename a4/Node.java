@@ -337,7 +337,7 @@ public class Node implements Comparable<Node> {
 
 			// Find the cost of the neighbors of the current node
 			float currentCost = getCostToDestination(destination);
-			float minCost = Float.MAX_VALUE;
+			float minCost = Float.POSITIVE_INFINITY;
 			Node nextHop = null;
 			
 			// Iterate through all the possible paths and use the minimum cost path 
