@@ -127,6 +127,10 @@ public class Node implements Comparable<Node> {
 		
 		// Change the cost to this neighbor
 		costToNeighborMap.put(neighbor, cost);
+		
+		for(Node testNeighbor : getNeighbors()){
+			System.out.println(this.name+" to " + testNeighbor.name + ": " + getCostToNeighbor(testNeighbor));
+		}
 	
 		// Update the local routing info (distance vector and forwarding table) with the new cost
 		doDistanceVectorUpdate();
@@ -325,30 +329,39 @@ public class Node implements Comparable<Node> {
 		// Do Bellman-Ford updates using this node's local info
 		// If something changed, notify this node's neighbors by calling notifyNeighbors()
 		for(Node destination : getDestinations()){
-
-			float costToDestination = getCostToNeighbor(destination);
+			
+			// Skip checking the cost from a node to itself
+			if(destination == this){
+				continue;
+			}
 
 			// Find the cost of the neighbors of the current node
-			Collection<Node> neighbors = getNeighbors();
-			for(Node neighbor: neighbors){
-
+			float currentCost = getCostToDestination(destination);
+			float minCost = Float.MAX_VALUE;
+			Node nextHop = null;
+			
+			// Iterate through all the possible paths and use the minimum cost path 
+			for(Node neighbor: getNeighbors()){
 				float newCost = getCostFromNeighborTo(neighbor, destination) + getCostToNeighbor(neighbor);
-				float currentCost = getCostToDestination(destination);
-				
-				// Update the forwarding table if the cost from the neighbor is less
-				if(newCost < currentCost){
-					System.out.println("Something changed at node " + this.name + ".  The cost to " + destination.name + " changed. Notifying neighbours...");
-					try {
-						
-						// Update the distance vector and forwarding table
-						updateDistanceVector(destination, newCost);
-						updateForwardingTable(destination, neighbor);
-					} catch (Exception e) {
-						System.out.println("Error updating distance vector for node " + this.name);
-						e.printStackTrace();
-					}
-					notifyNeighbors();
-				}	
+				if(newCost < minCost){
+					minCost = newCost;
+					nextHop = neighbor;
+				}
+			}
+			
+			//Notify neighbors of changes
+			if(minCost != currentCost){
+				System.out.println("Something changed at node " + this.name + ".  The cost to " + destination.name + " changed. Notifying neighbours...");
+
+				// Update the distance vector and forwarding table
+				try {
+					updateDistanceVector(destination, minCost);
+					updateForwardingTable(destination, nextHop);
+				} catch (Exception e) {
+					System.out.println("Error updating distance vector for node " + this.name);
+					e.printStackTrace();
+				}
+				notifyNeighbors();
 			}	
 		}
 	}
