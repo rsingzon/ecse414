@@ -328,9 +328,6 @@ public class Node implements Comparable<Node> {
 
 			float costToDestination = getCostToNeighbor(destination);
 
-			//System.out.println("Cost from " +this.name+" to "+destination.name+": "+costToDestination);
-			
-
 			// Find the cost of the neighbors of the current node
 			Collection<Node> neighbors = getNeighbors();
 			for(Node neighbor: neighbors){
@@ -338,11 +335,19 @@ public class Node implements Comparable<Node> {
 				float newCost = getCostFromNeighborTo(neighbor, destination) + getCostToNeighbor(neighbor);
 				float currentCost = getCostToDestination(destination);
 				
-				
 				// Update the forwarding table if the cost from the neighbor is less
 				if(newCost < currentCost){
 					System.out.println("Something changed at node " + this.name + ".  The cost to " + destination.name + " changed. Notifying neighbours...");
-					//notifyNeighbors();
+					try {
+						
+						// Update the distance vector and forwarding table
+						updateDistanceVector(destination, newCost);
+						updateForwardingTable(destination, neighbor);
+					} catch (Exception e) {
+						System.out.println("Error updating distance vector for node " + this.name);
+						e.printStackTrace();
+					}
+					notifyNeighbors();
 				}	
 			}	
 		}
@@ -357,9 +362,9 @@ public class Node implements Comparable<Node> {
 		// Create a message containing the contents of this node's distance vector
 		HashMap<Node, Float> distances = new HashMap<Node,Float>(); 
 		
-		// Iterate through each neighbour and record the distance to each neighbour
-		for(Node neighbor : getNeighbors()){
-			distances.put(neighbor, getCostToNeighbor(neighbor));
+		// Iterate through each destination and record the distance to each 
+		for(Node destination : getDestinations()){
+			distances.put(destination, getCostToDestination(destination));
 		}
 		
 		Message message = new Message(this, distances);
