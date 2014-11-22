@@ -324,18 +324,25 @@ public class Node implements Comparable<Node> {
 		// Loop over all possible destinations
 		// Do Bellman-Ford updates using this node's local info
 		// If something changed, notify this node's neighbors by calling notifyNeighbors()
-		for(Node neighbor : getNeighbors()){
+		for(Node destination : getDestinations()){
 
-			float costToNeighbor = getCostToNeighbor(neighbor);
+			float costToDestination = getCostToNeighbor(destination);
 
-			// Find the cost of the neighbours of every destination
-			Collection<Node> reachableNodes = neighbor.getNeighbors();
-			for(Node destination : reachableNodes){
+			//System.out.println("Cost from " +this.name+" to "+destination.name+": "+costToDestination);
+			
 
-				// Update the forwarding table if the cost from the neighbour is less
-				if(getCostFromNeighborTo(neighbor, destination) < getCostToNeighbor(destination)){
-					System.out.println("Node " + this.name + " changed.  Notifying neighbours");
-					notifyNeighbors();
+			// Find the cost of the neighbors of the current node
+			Collection<Node> neighbors = getNeighbors();
+			for(Node neighbor: neighbors){
+
+				float newCost = getCostFromNeighborTo(neighbor, destination) + getCostToNeighbor(neighbor);
+				float currentCost = getCostToDestination(destination);
+				
+				
+				// Update the forwarding table if the cost from the neighbor is less
+				if(newCost < currentCost){
+					System.out.println("Something changed at node " + this.name + ".  The cost to " + destination.name + " changed. Notifying neighbours...");
+					//notifyNeighbors();
 				}	
 			}	
 		}
@@ -350,7 +357,7 @@ public class Node implements Comparable<Node> {
 		// Create a message containing the contents of this node's distance vector
 		HashMap<Node, Float> distances = new HashMap<Node,Float>(); 
 		
-		// Iterate through each neighbour and notify it of the change
+		// Iterate through each neighbour and record the distance to each neighbour
 		for(Node neighbor : getNeighbors()){
 			distances.put(neighbor, getCostToNeighbor(neighbor));
 		}
